@@ -15,10 +15,26 @@
     		width: 125px;
     		text-align: center;
     	}
-
+      #nameDisplay {
+        font-size: 14px;
+        color: #666;
+        text-align: center;
+        margin-top: 5px;
+        display: none;
+      }
+      #optionsLink {
+        font-size: 12px;
+        color: #0066cc;
+        text-align: center;
+        margin-top: 10px;
+        cursor: pointer;
+        display: block;
+      }
     </style>
   </head>
   <body>
-    <input type="text" id="copyField" disabled></span>
+    <input type="text" id="copyField" disabled>
+    <div id="nameDisplay"></div>
+    <a id="optionsLink">Impostazioni</a>
   </body>
 </html>

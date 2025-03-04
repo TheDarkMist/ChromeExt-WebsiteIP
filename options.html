@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website IP - Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 18px;
+    }
+    .ip-entry {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    input[type="text"] {
+      padding: 5px;
+      margin-right: 5px;
+    }
+    .name-input {
+      width: 100px;
+    }
+    .ip-input {
+      width: 150px;
+    }
+    button {
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    #add-new {
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>IP-Name Associations</h1>
+  <p>Assign short names (max 10 characters) to IP addresses</p>
+  
+  <div id="ip-entries">
+    <!-- IP-name entries will be dynamically inserted here -->
+  </div>
+  
+  <button id="add-new">Add New</button>
+  <div id="status"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html> 
