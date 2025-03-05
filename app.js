@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
         copyField.select();
         document.execCommand("copy");
         
-        // Aggiungere feedback visivo quando l'IP viene copiato
+        // Add visual feedback when the IP is copied
         const originalValue = copyField.value;
-        copyField.value = "Copiato!";
+        copyField.value = "Copied!";
         copyField.style.color = "#4CAF50";
         
         setTimeout(() => {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // Aggiungere event listener per il link alle opzioni
+    // Add event listener for the options link
     if (optionsLink) {
       optionsLink.addEventListener('click', function() {
         chrome.runtime.openOptionsPage();
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentIp = output.query;
         copyField.value = currentIp;
         
-        // Controllare se l'IP corrisponde a uno di quelli salvati
+        // Check if the IP matches any of the saved IPs
         chrome.storage.sync.get('ipNames', function(data) {
           const ipNames = data.ipNames || [];
           const matchingEntry = ipNames.find(entry => entry.ip === currentIp);
@@ -55,13 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
         
-        // Aggiungere l'event listener solo al campo copyField invece che all'intero documento
+        // Add event listener only to the copyField instead of the entire document
         copyField.addEventListener('click', copyToClipboard, false);
       })
       .catch(err => {
         console.log(err);
-        copyField.value = "Errore";
-        nameDisplay.textContent = "Impossibile recuperare l'IP";
+        copyField.value = "Error";
+        nameDisplay.textContent = "Failed to retrieve the IP";
         nameDisplay.style.display = "block";
         nameDisplay.style.color = "#f44336";
       });
