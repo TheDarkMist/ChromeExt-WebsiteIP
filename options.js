@@ -1,4 +1,4 @@
-// Funzione per caricare le associazioni IP-nome salvate
+// Function to load saved IP-name associations
 function loadSavedIpNames() {
   chrome.storage.sync.get('ipNames', function(data) {
     const ipNames = data.ipNames || [];
@@ -15,7 +15,7 @@ function loadSavedIpNames() {
   });
 }
 
-// Funzione per aggiungere una nuova voce all'interfaccia
+// Function to add a new entry to the interface
 function addEntryToUI(ip = '', name = '', index) {
   const container = document.getElementById('ip-entries');
   const entryDiv = document.createElement('div');
@@ -31,27 +31,27 @@ function addEntryToUI(ip = '', name = '', index) {
   
   container.appendChild(entryDiv);
   
-  // Aggiungere event listener al pulsante di eliminazione
+  // Add event listener to the delete button
   entryDiv.querySelector('.delete-btn').addEventListener('click', function() {
     entryDiv.remove();
     saveEntries();
   });
   
-  // Aggiungere event listener agli input per salvare automaticamente
+  // Add event listener to the inputs to save automatically
   const inputs = entryDiv.querySelectorAll('input');
   inputs.forEach(input => {
     input.addEventListener('change', saveEntries);
   });
 }
 
-// Funzione per aggiungere una nuova voce vuota
+// Function to add a new empty entry
 function addNewEntry() {
   const container = document.getElementById('ip-entries');
   const currentEntries = container.querySelectorAll('.ip-entry');
   addEntryToUI('', '', currentEntries.length);
 }
 
-// Funzione per salvare tutte le voci
+// Function to save all entries
 function saveEntries() {
   const entries = document.querySelectorAll('.ip-entry');
   const ipNames = [];
@@ -65,16 +65,16 @@ function saveEntries() {
     const ip = ipInput.value.trim();
     const name = nameInput.value.trim();
     
-    // Validazione
+    // Validation
     errorDiv.textContent = '';
     if (ip && name) {
-      // Validazione semplice dell'IP (potrebbe essere migliorata)
+      // Simple IP validation (could be improved)
       const ipPattern = /^(\d{1,3}\.){3}\d{1,3}$|^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
       if (!ipPattern.test(ip)) {
-        errorDiv.textContent = 'Formato IP non valido';
+        errorDiv.textContent = 'Invalid IP format';
         hasError = true;
       } else if (name.length > 10) {
-        errorDiv.textContent = 'Il nome deve essere max 10 caratteri';
+        errorDiv.textContent = 'The name must be max 10 characters';
         hasError = true;
       } else {
         ipNames.push({ ip, name });
@@ -85,13 +85,13 @@ function saveEntries() {
   if (!hasError) {
     chrome.storage.sync.set({ ipNames }, function() {
       const status = document.getElementById('status');
-      status.textContent = 'Impostazioni salvate!';
+      status.textContent = 'Settings saved!';
       setTimeout(() => { status.textContent = ''; }, 1500);
     });
   }
 }
 
-// Inizializzazione
+// Initialization
 document.addEventListener('DOMContentLoaded', function() {
   loadSavedIpNames();
   
