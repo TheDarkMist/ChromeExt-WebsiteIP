@@ -1,18 +1,20 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
-# Project Overview
+# Project Overview: Website IP Chrome Extension
 
-This is a Chrome Extension for displaying website IP information.
+## Purpose
+
+This is a Chrome Extension designed to display the IP addresstly active website tab. It uses external DNS-over-HTTPS services (Google DNS or Cloudflare DNS) the domain name.
 
 ## Key Files:
 
-*   **Manifest:** [manifest.json](mdc:manifest.json) - Defines the extension's structure, permissions, popup, and options page.
-*   **Popup UI:** [index.html](mdc:index.html) - The HTML file for the browser action popup.
-*   **Popup Logic:** [app.js](mdc:app.js) - JavaScript handling the logic for the popup ([index.html](mdc:index.html)).
-*   **Options UI:** [options.html](mdc:options.html) - The HTML file for the extension's options page.
-*   **Options Logic:** [options.js](mdc:options.js) - JavaScript handling the logic for the options page ([options.html](mdc:options.html)).
-*   **Icon:** [icon.png](mdc:icon.png) - The extension's icon.
-
+*   **Manifest:** `manifest.jsofines the extension's structure, name ("Website iption, version, permisstorage, scripting), background service worker, browser action popup, option icons. Specifies host permissions needed for DNS lookupup UI:** `index.he HTML file for the browser action popup window that appears when the extension icon is clicked. Displays the IP address.
+*   **Popup Logic:** `app.js` - JavaScript handling the logic for the popup (`index.html`). Likely fetches the current tab's URL and communicates with the background script to get the IP.
+*   **Background Logic:** `background.js` - The service worker script. Handles requests from the popup, performs the actual DNS lookups using `fetch` to Google or Cloudflare DNS APIs, and potentially caches results.
+*   **Options UI:** `options.html` - The HTML file for the extension's options page, likely allowing users to configure settings (e.g., choose the DNS provider).
+*   **Options Logic:** `options.js` - JavaScript handling the logic and saving preferences for the options page (`options.html`).
+*   **Icon:** `icon.png` - The 48x48 pixel icon used for the extension in the browser toolbar and management pages.
+*   **Ignore File:** `.gitignore` - Specifies intentionally untracked files that Git should ignore (e.g., IDE configuration, OS files).
