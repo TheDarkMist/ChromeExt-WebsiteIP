@@ -10,9 +10,17 @@
     "default_icon": "icon.png",
     "default_popup": "index.html"
   },
+  "background": {
+    "service_worker": "background.js"
+  },
   "permissions": [
-    "activeTab",
-    "storage"
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://dns.google/",
+    "https://cloudflare-dns.com/"
   ],
   "options_page": "options.html"
 }
