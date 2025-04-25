@@ -1,0 +1,33 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# IDE/Editor Configuration
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependency Directories
+node_modules/
+bower_components/
+
+# Log Files
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary Files
+*.tmp
+*.temp
+
+# Build Output (optional, uncomment if needed)
+# dist/
+# build/
+
+# Chrome Extension specific (optional, uncomment if needed)
+# *.pem
+# *.crx 

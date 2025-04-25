@@ -1,0 +1,18 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Overview
+
+This is a Chrome Extension for displaying website IP information.
+
+## Key Files:
+
+*   **Manifest:** [manifest.json](mdc:manifest.json) - Defines the extension's structure, permissions, popup, and options page.
+*   **Popup UI:** [index.html](mdc:index.html) - The HTML file for the browser action popup.
+*   **Popup Logic:** [app.js](mdc:app.js) - JavaScript handling the logic for the popup ([index.html](mdc:index.html)).
+*   **Options UI:** [options.html](mdc:options.html) - The HTML file for the extension's options page.
+*   **Options Logic:** [options.js](mdc:options.js) - JavaScript handling the logic for the options page ([options.html](mdc:options.html)).
+*   **Icon:** [icon.png](mdc:icon.png) - The extension's icon.
+
