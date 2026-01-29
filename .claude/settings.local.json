@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" status)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" diff)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" log --oneline -5)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" diff --staged)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" reset HEAD CLAUDE.md .cursor/rules/project-overview.mdc)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" add app.js background.js manifest.json options.js)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" commit -m \"$\\(cat <<''EOF''\nFix security vulnerabilities in extension\n\n- Use HTTPS instead of HTTP for ip-api.com requests \\(MITM protection\\)\n- Replace innerHTML with DOM methods to prevent XSS attacks\n- Use modern clipboard API with fallback for deprecated execCommand\n- Add proper IPv4/IPv6 validation \\(correct octet ranges, compressed notation\\)\n- Remove unused ''scripting'' permission \\(principle of least privilege\\)\n- Add chrome.runtime.lastError checks for storage operations\n- Remove console.log statements to prevent information leakage\n- Add ip-api.com to host_permissions for HTTPS requests\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" log --format=\"%an <%ae>\" -5)",
+      "Bash(git config:*)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" add CLAUDE.md .cursor/rules/project-overview.mdc .claude/)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" commit -m \"$\\(cat <<''EOF''\nAdd Claude Code configuration, remove Cursor rules\n\n- Add CLAUDE.md with project documentation for Claude Code\n- Add .claude/ settings directory\n- Remove .cursor/rules/project-overview.mdc \\(migrated to CLAUDE.md\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" log --oneline -3)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" add .claude/settings.local.json)",
+      "Bash(git -C \"C:\\\\Users\\\\franc\\\\Documents\\\\bs-projects\\\\chrome-extensions\\\\ChromeExt-WebsiteIP\" commit --amend --no-edit)"
+    ]
+  }
+}
