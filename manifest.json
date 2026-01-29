@@ -15,12 +15,12 @@
   },
   "permissions": [
     "tabs",
-    "storage",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "https://dns.google/",
-    "https://cloudflare-dns.com/"
+    "https://cloudflare-dns.com/",
+    "https://ip-api.com/"
   ],
   "options_page": "options.html"
 }

@@ -18,7 +18,6 @@ async function getIpFromHostname(hostname) {
 
       const response = await fetch(url, { headers });
       if (!response.ok) {
-        console.error(`DoH request failed for ${hostname} at ${endpoint}: ${response.status}`);
         continue; // Try next endpoint
       }
       const data = await response.json();
@@ -26,15 +25,13 @@ async function getIpFromHostname(hostname) {
         // Return the first A record found
         const ips = data.Answer.filter(record => record.type === 1).map(record => record.data);
         if (ips.length > 0) {
-          console.log(`Resolved ${hostname} to ${ips[0]} using ${endpoint}`);
           return ips; // Return all resolved IPs
         }
       }
     } catch (error) {
-      console.error(`Error during DoH request for ${hostname} at ${endpoint}:`, error);
+      // Continue to next endpoint on error
     }
   }
-  console.warn(`Could not resolve IP for ${hostname} using any DoH endpoint.`);
   return null;
 }
 
@@ -65,7 +62,6 @@ async function updateBadgeForTab(tabId) {
         const badgeText = entry.name.substring(0, 3);
         chrome.action.setBadgeText({ text: badgeText, tabId: tabId });
         chrome.action.setBadgeBackgroundColor({ color: '#FFA500', tabId: tabId }); // Orange background
-        console.log(`Badge set to '${badgeText}' for tab ${tabId} (IP: ${entry.ip})`);
         foundMatch = true;
         break; // Stop after first match
       }
@@ -73,15 +69,9 @@ async function updateBadgeForTab(tabId) {
 
     if (!foundMatch) {
       chrome.action.setBadgeText({ text: '', tabId: tabId });
-      console.log(`No matching IP found for tab ${tabId}, clearing badge.`);
     }
   } catch (error) {
     // Handle potential errors like the tab being closed before we process it
-    if (error.message.includes("No tab with id") || error.message.includes("Invalid tab ID")) {
-      console.log(`Tab ${tabId} closed before processing.`);
-    } else {
-        console.error(`Error updating badge for tab ${tabId}:`, error);
-    }
     try {
         // Attempt to clear the badge anyway if an error occurred
         chrome.action.setBadgeText({ text: '', tabId: tabId });
@@ -93,7 +83,6 @@ async function updateBadgeForTab(tabId) {
 
 // Listen for tab activation changes
 chrome.tabs.onActivated.addListener(activeInfo => {
-  console.log(`Tab activated: ${activeInfo.tabId}`);
   updateBadgeForTab(activeInfo.tabId);
 });
 
@@ -101,19 +90,9 @@ chrome.tabs.onActivated.addListener(activeInfo => {
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   // Update only when the URL changes and the tab is fully loaded
   if (changeInfo.url && tab.status === 'complete') {
-    console.log(`Tab updated: ${tabId}, URL changed to: ${changeInfo.url}`);
     updateBadgeForTab(tabId);
   } else if (changeInfo.status === 'complete' && tab.url) {
      // Also update if the tab finishes loading (e.g., after initial load)
-     console.log(`Tab updated: ${tabId}, Status complete.`);
      updateBadgeForTab(tabId);
   }
-});
-
-// Optional: Clear badge when a window is closed (might remove active tab's badge)
-// chrome.windows.onRemoved.addListener(windowId => {
-//   console.log(`Window closed: ${windowId}`);
-//   // Potentially clear all badges or based on last active tab in that window?
-// });
-
-console.log('Background script loaded.'); 
+}); 
