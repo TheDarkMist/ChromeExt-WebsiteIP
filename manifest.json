@@ -19,8 +19,7 @@
   ],
   "host_permissions": [
     "https://dns.google/",
-    "https://cloudflare-dns.com/",
-    "https://ip-api.com/"
+    "https://cloudflare-dns.com/"
   ],
   "options_page": "options.html"
 }
